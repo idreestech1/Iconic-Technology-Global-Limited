@@ -1,0 +1,144 @@
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { siteInfo } from '../../data/siteData';
+
+export default function OffcanvasMenu({ isOpen, onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  return (
+    <div className={`offcanvas-3__area ${isOpen ? 'is-open' : ''}`} aria-hidden={!isOpen}>
+      <div className="offcanvas-3__inner">
+        <div className="offcanvas-3__meta-wrapper">
+          <div className="d-flex align-items-center justify-content-between mb-4">
+            <Link to="/" onClick={onClose} aria-label="Iconic Technologies Home">
+              <img
+                src="/assets/imgs/logo/logo-light.png"
+                alt="Iconic Technologies Logo"
+                style={{ maxHeight: '54px', height: '50px', width: 'auto' }}
+              />
+            </Link>
+            <button
+              id="close_offcanvas"
+              className="close-button close-offcanvas"
+              onClick={onClose}
+              aria-label="Close navigation menu"
+            >
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+          <div>
+            <div className="offcanvas-3__meta mb-145 d-none d-md-block">
+              <ul>
+                <li>
+                  <a href={`tel:${siteInfo.phoneRaw}`} className="unnerline">
+                    <u>{siteInfo.phone}</u>
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${siteInfo.email}`}>{siteInfo.email}</a>
+                </li>
+                <li style={{ color: '#888888', fontSize: '13px', marginTop: '6px' }}>
+                  RC 8967406
+                </li>
+              </ul>
+            </div>
+            <div className="offcanvas-3__social d-none d-md-block">
+              <p className="title">Connect With Us</p>
+              <div className="offcanvas-3__social-links" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                <a href={siteInfo.socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                  <i className="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href={siteInfo.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                  <i className="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href={siteInfo.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                  <i className="fa-brands fa-instagram"></i>
+                </a>
+                <a href={siteInfo.socials.x} target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X (Twitter)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+                <a href={siteInfo.socials.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
+                  <i className="fa-brands fa-tiktok"></i>
+                </a>
+                <a href={siteInfo.socials.behance} target="_blank" rel="noopener noreferrer" aria-label="Behance" title="Behance">
+                  <i className="fa-brands fa-behance"></i>
+                </a>
+                <a href={siteInfo.socials.dribbble} target="_blank" rel="noopener noreferrer" aria-label="Dribbble" title="Dribbble">
+                  <i className="fa-brands fa-dribbble"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="offcanvas-3__menu-wrapper">
+          <nav className="nav-menu offcanvas-3__menu">
+            <ul>
+              <li style={{ transitionDelay: '0.05s' }}>
+                <Link to="/" onClick={onClose}>Home</Link>
+              </li>
+              <li style={{ transitionDelay: '0.1s' }}>
+                <Link to="/about-us" onClick={onClose}>About</Link>
+              </li>
+              <li style={{ transitionDelay: '0.15s' }}>
+                <Link to="/services" onClick={onClose}>Services</Link>
+              </li>
+              <li style={{ transitionDelay: '0.2s' }}>
+                <a
+                  href="https://www.behance.net/iconictechglbltd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onClose}
+                >
+                  Portfolio
+                </a>
+              </li>
+              <li style={{ transitionDelay: '0.25s' }}>
+                <Link to="/contact-us" onClick={onClose}>Contact Us</Link>
+              </li>
+              <li style={{ transitionDelay: '0.3s' }}>
+                <Link to="/service/ui-and-ux-design" onClick={onClose}>UI & UX Design</Link>
+              </li>
+              <li style={{ transitionDelay: '0.35s' }}>
+                <Link to="/service/graphic-design" onClick={onClose}>Graphic Design</Link>
+              </li>
+              <li style={{ transitionDelay: '0.4s' }}>
+                <Link to="/service/branding-and-rebranding" onClick={onClose}>Branding & Rebranding</Link>
+              </li>
+              <li style={{ transitionDelay: '0.45s' }}>
+                <Link to="/service/web-development" onClick={onClose}>Web Development</Link>
+              </li>
+              <li style={{ transitionDelay: '0.5s' }}>
+                <Link to="/service/app-development" onClick={onClose}>App Development</Link>
+              </li>
+              <li style={{ transitionDelay: '0.55s' }}>
+                <Link to="/service/digital-marketing" onClick={onClose}>Digital Marketing</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  );
+}

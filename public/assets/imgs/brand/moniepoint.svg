@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none" width="100%" height="100%">
+  <path d="M12 36L12 16C12 14.5 13.5 13.5 15 14.2L24 19L33 14.2C34.5 13.5 36 14.5 36 16L36 36" stroke="#121212" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="24" cy="30" r="3" fill="#121212"/>
+  <text x="46" y="32" font-family="'DM Sans', 'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700" fill="#121212" letter-spacing="-0.5px">moniepoint</text>
+</svg>
